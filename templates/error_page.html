@@ -1,0 +1,17 @@
+<!doctype html>
+
+<body bgcolor="#CCFFCC">
+<h3>2017 Film Search</h3>  
+
+<form action="/results/1" name="search" method="post">
+  Query:
+  <input type="text" name="query" size=50 value="{{ orig_query }}">
+  <input type="submit" value="Search">
+
+</form>
+  
+<h1>Search Results:</h1>
+<h5>Total hits: 0<br></h5>
+<h5>Unknown words: {{ unknown_words }}</h5>
+
+</body>

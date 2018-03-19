@@ -1,0 +1,34 @@
+<!doctype html>
+
+<body bgcolor="#CCFFCC">
+
+<h3>2017 Film Search</h3>  
+
+<form action="/results/1" name="search" method="post">
+  Query:
+  <input type="text" name="query" size=50 value="{{ orig_query }}">
+  <input type="submit" value="Search">
+
+</form>
+  
+<h1>Search Results:</h1>
+<h5>Total hits: {{ total_hits }}<br></h5>
+<h5>Ignoring stopword(s): {{ stopwd }}</h5>
+<h5>Ignoring unknown word(s): {{ unkown_wd }}</h5>
+<ol class="results">
+    {% for i in range(len) %}
+    	<li value="{{ (srpn-1)*10 + i + 1 }}"><h3><a href = "/movie_data/{{results[i].0}}" >{{ results[i].1 }} </a></h3></li>
+        <ul>
+            <li><h4>Rank Score :  {{ scores[i] }}</h4></li>
+            <li>{{ results[i].2 }}</li>
+        </ul>
+    {% endfor %}
+</ol>
+
+<form action="/results/{{ srpn + 1 }}" name="next" method="post">
+  <input type="hidden" name="query", value="{{ orig_query }}">
+  <input type="submit" value="Next">
+  
+</form>
+
+</body>
